@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-first-replicaset
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      name: my-first-app
+  template:
+    metadata:
+        labels:
+          name: my-first-app
+    spec:
+      containers:
+      - name: my-first-app
+        image: kubedevio/nginx-color:green
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 80
+

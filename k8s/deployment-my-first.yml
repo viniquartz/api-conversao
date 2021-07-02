@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-first-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-first-app
+  template:
+    metadata:
+        labels:
+          app: my-first-app
+    spec:
+      containers:
+      - name: my-first-app
+        image: kubedevio/nginx-color:blue
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 80
+
